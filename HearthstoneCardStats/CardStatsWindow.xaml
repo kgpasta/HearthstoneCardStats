@@ -1,0 +1,42 @@
+﻿<controls:MetroWindow x:Class="HearthstoneCardStats.CardStatsWindow"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:local="clr-namespace:Hearthstone_Deck_Tracker"
+                      Title="Card Statistics" Height="500" Width="500"
+                      BorderBrush="Black" BorderThickness="1" SizeChanged="MetroWindow_SizeChanged">
+    <Grid>
+        <DataGrid IsReadOnly="True" Grid.Row="1" Margin="0,5" CanUserAddRows="False"
+            Name="DataGridCardStats"
+            AlternationCount="2" AutoGenerateColumns="False"
+            CanUserDeleteRows="False"
+            CanUserResizeColumns="False" CanUserResizeRows="False"
+            MouseDoubleClick="DGridOverall_MouseDoubleClick"
+            SelectionChanged="DGridOverall_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Card" Binding="{Binding CardName}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Played %" Binding="{Binding PlayedPercentage}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Win %" Binding="{Binding WinPercentage}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Name="TextBlockLoading" Text="Calculating Statistics..." Margin="190,76,78.2,342.8"></TextBlock>
+    </Grid>
+</controls:MetroWindow>
