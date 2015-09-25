@@ -24,25 +24,41 @@ namespace HearthstoneCardStats
         public double PlayedPercentage
         {
             get {
-                return GetPercentage(played, drawn);
+                return GetDecimal(played, drawn) * 100;
             }
         }
 
         public double WinPercentage
         {
             get {
-                return GetPercentage(won, played);
+                return GetDecimal(won, played) * 100;
             }
         }
 
-        private double GetPercentage(int numerator, int denominator)
+        public double AverageDamageDealt
+        {
+            get
+            {
+                return GetDecimal(damageDealt, played);
+            }
+        }
+
+        public double AverageDamageRecieved
+        {
+            get
+            {
+                return GetDecimal(damageRecieved, played);
+            }
+        }
+
+        private double GetDecimal(int numerator, int denominator)
         {
             if (denominator == 0)
             {
                 return 0;
             }
-            double percentage = Math.Round(((double)numerator / (double)denominator) * 100, 2);
-            return percentage; 
+            double dec = Math.Round(((double)numerator / (double)denominator), 2);
+            return dec; 
         }
 
         public CardStats(string id)
@@ -72,8 +88,10 @@ namespace HearthstoneCardStats
             drawn++;
         }
 
-        public void IncrementDamage()
+        public void IncrementDamage(int attack, int damage)
         {
+            damageDealt += attack;
+            damageRecieved += damage;
 
         }
     }

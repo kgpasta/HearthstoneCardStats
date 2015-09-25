@@ -15,6 +15,10 @@ namespace HearthstoneCardStats
 	{
         public static Dictionary<String,CardStats> LoadFile() {
             Deck deck = DeckList.Instance.ActiveDeck;
+            if (deck == null)
+            {
+                return null;
+            }
             var games = deck.DeckStats.Games;
 
             Dictionary<String, CardStats> cardStatTable = new Dictionary<String, CardStats>();
@@ -57,9 +61,16 @@ namespace HearthstoneCardStats
                                 }
                                 else if (point.Type == KeyPointType.Attack)
                                 {
-                                    int attack = point.Data[0].Attack;
-                                    //TODO: Find opponents damage dealt
-                                    //cardStats.IncrementDamage(attack);
+                                    int cardIndexAtk = point.Data[0].GetTag(GAME_TAG.PROPOSED_ATTACKER) - 1;
+                                    int cardIndexDef = point.Data[0].GetTag(GAME_TAG.PROPOSED_DEFENDER) - 1;
+                                    if (cardIndexAtk < point.Data.Length && cardIndexDef < point.Data.Length)
+                                    {
+                                        int attack = point.Data[cardIndexAtk].Attack;
+                                        int damage = point.Data[cardIndexDef].Attack;
+
+                                        cardStats.IncrementDamage(attack, damage);
+                                    }
+
                                 }
                             }
                         }

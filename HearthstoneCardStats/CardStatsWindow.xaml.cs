@@ -46,10 +46,17 @@ namespace HearthstoneCardStats
 
         public async void LoadCards()
         {
+            DataGridCardStats.Items.Clear();
+            DataGridCardStats.Items.Refresh();
+            TextBlockLoading.Visibility = Visibility.Visible;
+
             Dictionary<String, CardStats> cardStats =  await Task.Run(() => ReadReplay.LoadFile());
-            foreach (KeyValuePair<String,CardStats> stat in cardStats)
+            if (cardStats != null)
             {
-                DataGridCardStats.Items.Add(stat.Value);
+                foreach (KeyValuePair<String, CardStats> stat in cardStats)
+                {
+                    DataGridCardStats.Items.Add(stat.Value);
+                }
             }
             TextBlockLoading.Visibility = Visibility.Hidden;
         }
