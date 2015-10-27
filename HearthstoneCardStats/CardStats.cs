@@ -102,9 +102,9 @@ namespace HearthstoneCardStats
             turnPlayed = turn;
         }
         
-        public void CalculateTurnsOnBoard(int turns)
+        public void CalculateTurnsOnBoard(int turn)
         {
-            turnsOnBoard = turns;
+            turnsOnBoard = turn - turnPlayed;
         }
     }
 }
