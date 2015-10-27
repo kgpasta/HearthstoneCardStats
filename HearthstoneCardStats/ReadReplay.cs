@@ -54,7 +54,7 @@ namespace HearthstoneCardStats
                                 if (point.Type == KeyPointType.Play || point.Type == KeyPointType.PlaySpell)
                                 {
                                     cardStats.IncrementPlay(gameResult);
-                                    cardStats.SetPlayedTurn(point.Turn);
+                                    cardStats.SetTurnPlayed(point.Turn);
                                 }
                                 else if (point.Type == KeyPointType.Draw)
                                 {
@@ -74,8 +74,7 @@ namespace HearthstoneCardStats
 
                                 } else if(point.Type == KeyPointType.Death)
                                 {
-                                	int turnsOnBoard = point.Turn - cardStats.playedTurn;
-                                	cardStats.TurnsOnBoard = turnsOnBoard;
+                                	cardStats.CalculateTurnsOnBoard(point.turn);
                                 }
                             }
                         }
