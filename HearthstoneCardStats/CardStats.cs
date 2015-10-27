@@ -16,6 +16,8 @@ namespace HearthstoneCardStats
         public int loss;
         public int damageDealt;
         public int damageRecieved;
+        public int turnPlayed;
+        public int turnsOnBoard;
 
         public string CardName {
             get { return card.Name; }
@@ -93,6 +95,16 @@ namespace HearthstoneCardStats
             damageDealt += attack;
             damageRecieved += damage;
 
+        }
+        
+        public void SetTurnPlayed(int turn)
+        {
+            turnPlayed = turn;
+        }
+        
+        public void CalculateTurnsOnBoard(int turns)
+        {
+            turnsOnBoard = turns;
         }
     }
 }
