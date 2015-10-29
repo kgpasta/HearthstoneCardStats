@@ -49,6 +49,13 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
+                <DataGridTextColumn Header="Avg Turns On Board" Binding="{Binding AverageTurnsOnBoard}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Name="TextBlockLoading" Text="Calculating Statistics..." Margin="190,76,78.2,342.8"></TextBlock>

@@ -16,7 +16,6 @@ namespace HearthstoneCardStats
         public int loss;
         public int damageDealt;
         public int damageRecieved;
-        public int turnPlayed;
         public int turnsOnBoard;
 
         public string CardName {
@@ -50,6 +49,14 @@ namespace HearthstoneCardStats
             get
             {
                 return GetDecimal(damageRecieved, played);
+            }
+        }
+        
+        public double AverageTurnsOnBoard
+        {
+            get
+            {
+                return GetDecimal(turnsOnBoard, played);
             }
         }
 
@@ -97,14 +104,9 @@ namespace HearthstoneCardStats
 
         }
         
-        public void SetTurnPlayed(int turn)
+        public void CalculateTurnsOnBoard(int turnPlayed, int turnDied)
         {
-            turnPlayed = turn;
-        }
-        
-        public void CalculateTurnsOnBoard(int turn)
-        {
-            turnsOnBoard = turn - turnPlayed;
+            turnsOnBoard += turnDied - turnPlayed;
         }
     }
 }
