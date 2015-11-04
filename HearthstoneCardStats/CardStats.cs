@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace HearthstoneCardStats
 {
@@ -57,6 +58,22 @@ namespace HearthstoneCardStats
             get
             {
                 return GetDecimal(turnsOnBoard, played);
+            }
+        }
+
+        public string CardImage
+        {
+            get
+            {
+                return "../Images/" + card.CardFileName + ".png";
+            }
+        }
+
+        public string Name
+        {
+            get 
+            {
+                return card.Name;
             }
         }
 

@@ -3,7 +3,7 @@
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:local="clr-namespace:Hearthstone_Deck_Tracker"
-                      Title="Card Statistics" Height="500" Width="500"
+                      Title="Card Statistics" Height="500" Width="800"
                       BorderBrush="Black" BorderThickness="1" SizeChanged="MetroWindow_SizeChanged">
     <Grid>
         <DataGrid IsReadOnly="True" Grid.Row="1" Margin="0,5" CanUserAddRows="False"
@@ -14,13 +14,20 @@
             MouseDoubleClick="DGridOverall_MouseDoubleClick"
             SelectionChanged="DGridOverall_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Card" Binding="{Binding CardName}">
+                <DataGridTextColumn Header="Card Name" Binding="{Binding Name}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Card">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="110" Height="35" Source="{Binding CardImage}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Played %" Binding="{Binding PlayedPercentage}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
